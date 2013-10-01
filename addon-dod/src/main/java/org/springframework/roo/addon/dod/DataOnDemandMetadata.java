@@ -342,8 +342,8 @@ public class DataOnDemandMetadata extends
         scale = scale == null ? 0 : scale;
         final BigDecimal maxValue = new BigDecimal(StringUtils.rightPad("9",
                 precision - scale, '9')
-                + "."
-                + StringUtils.rightPad("9", scale, '9'));
+                + (scale > 0 ?  "." : "")
+                + StringUtils.repeat("9", scale));
 
         final InvocableMemberBodyBuilder bodyBuilder = new InvocableMemberBodyBuilder();
         if (fieldType.equals(BIG_DECIMAL)) {
